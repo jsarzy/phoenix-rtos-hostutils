@@ -75,6 +75,7 @@ int dispatch(char *dev_addr, dmode_t mode, char *sysdir, void *data)
 			return ERR_DISPATCH_IO;
 		}
 		printf("[%d] dispatch: Starting message dispatcher on [%s] (speed=%d)\n", getpid(), dev_addr, baudrate);
+		fflush(stdout);
 		if ((fd = serial_open(dev_addr, *(speed_t *)data)) < 0) {
 			fprintf(stderr, "[%d] dispatch: Can't open serial port '%s'\n", getpid(), dev_addr);
 			return ERR_DISPATCH_IO;
